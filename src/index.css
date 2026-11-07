@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #090A0D;
+    color: #E2E4E9;
+    overflow-x: hidden;
+  }
+
+  /* Custom matte scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #090A0D;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1C202B;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #C5A869;
+  }
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #F7F3E8 0%, #C5A869 50%, #94773B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border-subtle {
+  border: 1px solid rgba(197, 168, 105, 0.22);
+}
+
+.gold-border-subtle:hover {
+  border-color: rgba(197, 168, 105, 0.45);
+}
+
+/* Futsal pitch pattern */
+.futsal-pitch {
+  background-color: #0b1a2e;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
