@@ -284,49 +284,44 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* Navigation Tabs (100% visible on any mobile screen in 4 columns) */}
-          <div className="grid grid-cols-4 sm:flex sm:overflow-x-auto border-b border-white/10 bg-[#0E1017] flex-shrink-0">
-            {[
-              { id: 'results', label: 'Resultados', mobileLabel: 'Resultados', icon: Trophy },
-              { id: 'users', label: 'Cuentas', mobileLabel: 'Cuentas', icon: Users, badge: `${votedCount}/${totalVoters.length}` },
-              { id: 'nominees', label: 'Nominados', mobileLabel: 'Nominados', icon: Edit3, badge: nominees.length },
-              { id: 'settings', label: 'Ajustes', mobileLabel: 'Ajustes', icon: Database },
-            ].map(tab => {
-              const Icon = tab.icon;
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id as any)}
-                  className={`flex flex-col sm:flex-row items-center justify-center sm:space-x-2 py-2.5 sm:py-3.5 px-2 sm:px-5 border-b-2 text-center transition-all ${
-                    isActive
-                      ? 'border-gold-500 text-gold-300 bg-white/[0.03]'
-                      : 'border-transparent text-gray-400 hover:text-white'
-                  }`}
-                >
-                  <div className="relative">
-                    <Icon className="w-4 h-4" />
+          {/* High-Visibility Segmented Admin Navigation Bar */}
+          <div className="p-2 sm:p-3 bg-[#0B0D13] border-b border-white/10 flex-shrink-0">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2 max-w-4xl mx-auto">
+              {[
+                { id: 'results', label: 'Resultados en Vivo', icon: Trophy },
+                { id: 'users', label: 'Cuentas de Amigos', icon: Users, badge: `${votedCount}/${totalVoters.length}` },
+                { id: 'nominees', label: 'Gestor Nominados', icon: Edit3, badge: nominees.length },
+                { id: 'settings', label: 'Base de Datos', icon: Database },
+              ].map(tab => {
+                const Icon = tab.icon;
+                const isActive = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id as any)}
+                    className={`py-2.5 px-3 rounded-xl font-brand font-semibold text-xs tracking-wider uppercase transition-all flex items-center justify-center space-x-2 shadow-sm ${
+                      isActive
+                        ? 'bg-gold-500 text-black font-bold shadow-md ring-1 ring-gold-400'
+                        : 'bg-[#151822] text-gray-300 border border-white/10 hover:border-white/20 hover:text-white'
+                    }`}
+                  >
+                    <Icon className="w-4 h-4 flex-shrink-0" />
+                    <span className="truncate">{tab.label}</span>
                     {tab.badge && (
-                      <span className="sm:hidden absolute -top-1 -right-2 px-1 py-0.2 rounded-full text-[8px] bg-gold-500 text-black font-bold">
-                        {String(tab.badge).split('/')[0]}
+                      <span className={`px-1.5 py-0.2 rounded-full text-[9px] font-bold ${
+                        isActive ? 'bg-black/20 text-black' : 'bg-white/10 text-gold-400'
+                      }`}>
+                        {tab.badge}
                       </span>
                     )}
-                  </div>
-                  <span className="font-brand font-semibold text-[10px] sm:text-xs uppercase tracking-wider mt-1 sm:mt-0 truncate">
-                    {tab.label}
-                  </span>
-                  {tab.badge && (
-                    <span className="hidden sm:inline px-1.5 py-0.2 rounded-full text-[9px] bg-white/10 text-gold-400 font-bold ml-1">
-                      {tab.badge}
-                    </span>
-                  )}
-                </button>
-              );
-            })}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           {/* Tab Content Container (Scrollable) */}
-          <div className="p-3.5 sm:p-6 overflow-y-auto flex-1">
+          <div className="p-3.5 sm:p-6 overflow-y-auto flex-1 bg-[#090A0D]">
             
             {/* 1. RESULTADOS EN VIVO */}
             {activeTab === 'results' && (
