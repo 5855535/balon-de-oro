@@ -98,31 +98,6 @@ export const LoginScreen: React.FC = () => {
           </button>
         </form>
 
-        {/* Subtle quick filler for admin testing (discreet, clean) */}
-        <div className="mt-6 flex items-center justify-center space-x-3 text-[11px] text-gray-500">
-          <button
-            type="button"
-            onClick={() => {
-              setUsername('admin');
-              setAccessCode('GALA2025');
-            }}
-            className="hover:text-gold-400 transition-colors"
-          >
-            Admin
-          </button>
-          <span>•</span>
-          <button
-            type="button"
-            onClick={() => {
-              setUsername('stivengarzon');
-              setAccessCode('VOTE101');
-            }}
-            className="hover:text-gold-400 transition-colors"
-          >
-            Votante Demo
-          </button>
-        </div>
-
       </div>
 
     </div>
